@@ -54,7 +54,9 @@
 	// Nur wenn Benutzer angemeldet ist!
 	if(isset($validuser)) {
 		if($action == 'view') {
-			echo $controller->displayData();
+			echo $controller->displayData($id);
+		} else if($action == 'detail') {
+			echo $controller->displayData($id);
 		} else if($action == 'delete') {
 			echo $controller->deleteData($id); 
 		} else if($action == 'insert') {
@@ -63,6 +65,7 @@
 			echo $controller->loadData(); 
 		}
 	} else {
-		echo $controller->displayPublicData(); 
+		//echo $controller->displayPublicData(); 
+		echo $controller->displayData($id);
 	}
 ?>

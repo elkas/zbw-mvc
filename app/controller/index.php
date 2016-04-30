@@ -13,12 +13,17 @@ class Controller{
 		$this->view = new View();
 	}
 
-	public function displayData(){
-		return $this->view->showContent($this->model->regUser());
+	public function displayData($id){
+		return $this->view->showContent($this->model->getData($id));
 	}
 
 	public function displayPublicData(){
 		return $this->view->showContent($this->model->publicUser());
+	}
+
+	public function deleteData($id) {
+		$this->model->deleteData($id);
+		return $this->view->showContent($this->model->getData('0'));
 	}
 }
 ?>
