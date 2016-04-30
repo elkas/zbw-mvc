@@ -4,8 +4,8 @@
 				<div class="row">
 					<div class="col-lg-9 col-sm-10 col-sm-push-1">
 						<h1 class="content-heading">Willkommen <strong>
-							<?php if($data) {
-									echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; 
+							<?php if(@$_SESSION['usersid']) {
+									echo @$_SESSION['firstname'] . ' ' . @$_SESSION['lastname']; 
 							} ?></strong></h1>
 					</div>
 				</div>

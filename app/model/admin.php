@@ -13,10 +13,14 @@ class Model {
 	}
 
 	public function deleteData($id) {
-		$this->data = '';
-		$this->db = new myDB();
-		$this->db->sqlExec('DELETE FROM  users WHERE usersid=' . $id);
-		$this->data = $this->db->_results;
+		if($id != 1) {
+			$this->data = '';
+			$this->db = new myDB();
+			$this->db->sqlExec('DELETE FROM  users WHERE usersid=' . $id);
+			$this->data = $this->db->_results;
+		} else {
+			$this->data = array('status'=>'false','message'=>'admin kann nicht gelöscht werden');
+		}
 		return $this->data;
 	}
 

@@ -24,7 +24,7 @@
 		</ul>
 		<a class="header-logo margin-left-no" href="?controller=index"></a>
 		
-		<?php if($data) { ?>
+		<?php if(@$_SESSION['usersid']) { ?>
 		
 		<ul class="nav nav-list pull-right">
 			<li class="dropdown margin-right">

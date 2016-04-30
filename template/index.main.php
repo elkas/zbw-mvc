@@ -1,10 +1,11 @@
+
 	<main class="content">
 		<div class="content-header ui-content-header">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-9 col-sm-10 col-sm-push-1">
 						<h1 class="content-heading">Willkommen <strong>
-							<?php if($data) {
+							<?php if(@$_SESSION['usersid']) {
 									echo @$_SESSION['firstname'] . ' ' . @$_SESSION['lastname']; 
 							} ?></strong></h1>
 					</div>
@@ -25,7 +26,12 @@
 										</div>
 									</div>
 									<div class="card-inner">
-										<span class="card-heading"><?php echo $value['titel']; ?> verfasst von <?php echo $value['user']; ?></span>
+										<span class="card-heading">
+											<a href="?controller=index&action=detail&id=<?php echo $value['id']; ?>">
+												
+											</a>
+											<?php echo $value['titel']; ?> verfasst von <?php echo $value['user']; ?>
+										</span>
 									</div>
 								</div>
 								<div class="card-img" style="height: auto; max-height: 30vh">
