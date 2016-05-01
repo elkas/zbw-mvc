@@ -5,8 +5,8 @@ class Controller{
 	private $model;
 	
 	public function __construct() {
-		$this->model	= new model();
-		$this->view	= new view();
+		$this->model = new Model();
+		$this->view	= new View();
 	}
 	
 	public function displayData(){
@@ -15,6 +15,11 @@ class Controller{
 
 	public function displayPublicData() {
 		echo $this->view->showContent($this->model->publicUser());
+	}
+
+	public function formValidation() {
+		$this->data = $this->model->formValidation();
+		return $this->data;
 	}
 }
 ?>

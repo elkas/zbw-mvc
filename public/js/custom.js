@@ -42,3 +42,41 @@ function viewEntries() {
 		}
 	});
 }
+
+
+$('#contactform').submit(function(event) {
+	event.preventDefault();
+	//var formdata = $(this).serialize();
+	var firstname = $('#firstname').val();
+	var lastname = $('#lastname').val();
+	var email = $('#email').val();
+	var website = $('#website').val();
+	var message = $('#message').val();
+	
+	// Datenarray zusammenstellen
+	var formdata = {
+		'firstname' : firstname, 
+		'lastname' : lastname, 
+		'email' : email, 
+		'website' : website, 
+		'message' : message
+	}
+
+	// AJAX Request
+	$.ajax({
+		type: 'POST',
+		//url: 'ajax.php',
+		url: '?controller=kontakt&action=send',
+		data: formdata,
+		dataType: 'json',
+		beforeSend: function() {
+			//console.log(formdata);
+		},
+		success: function (data) {
+			console.log(data);
+		},
+		complete: function() {
+			console.log('AJAX request completed!');
+		}
+	});
+});

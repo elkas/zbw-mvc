@@ -70,6 +70,9 @@
 		} else if($action == 'load') {
 			// z.B. ?controller=index&action=load
 			echo $controller->loadData(); 
+		} else if($action == 'send') {
+			// z.B. ?controller=index&action=send
+			echo $controller->formValidation();
 		}
 	} else {
 		//echo $controller->displayPublicData(); 
