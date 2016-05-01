@@ -59,7 +59,7 @@
 										<li class="dropdown">
 											<a class="dropdown-toggle text-black waves-attach waves-effect" data-toggle="dropdown" aria-expanded="false"><span class="icon">keyboard_arrow_down</span></a>
 											<ul class="dropdown-menu dropdown-menu-right">
-												<?php if($_SESSION['role'] == 2) { ?>
+												<?php if(@$_SESSION['role'] == 2) { ?>
 												<li>
 													<a class="waves-attach waves-effect" href="?controller=index&action=delete&id=<?php echo $value['id']; ?>"><span class="icon margin-right-sm">filter_1</span>&nbsp;Beitrag löschen</a>
 												</li>
