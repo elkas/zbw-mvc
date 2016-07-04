@@ -1,22 +1,28 @@
 function deleteEntry(id) {
 	//console.log(id);
 	$.ajax({
-		url: '?controller=admin&action=delete',
+		url: '/admin/delete',
 		type: 'POST',
 		dataType: "JSON",
 		data: { id:id },
 		success: function(response) {
 			//console.log(response);
 			viewEntries();
+			$('#delete_modal').modal('hide')
 		}
 	});
+}
+
+function confirmDeleteEntry(id) {
+	$('#delete_modal #delete-form').removeAttr('action');
+	$('#delete_modal #delete-button').data('dismiss', 'modal').attr('type', 'button').attr('onclick', 'deleteEntry('+id+')');
 }
 
 
 function viewEntries() {
 	var html = '';
 	$.ajax({
-		url: '?controller=admin&action=load',
+		url: '/admin/load',
 		type: 'GET',
 		dataType: "JSON",
 		data: { },
@@ -66,7 +72,7 @@ $('#contactform').submit(function(event) {
 	$.ajax({
 		type: 'POST',
 		//url: 'ajax.php',
-		url: '?controller=kontakt&action=send',
+		url: '/kontakt/send',
 		data: formdata,
 		dataType: 'json',
 		beforeSend: function() {

@@ -22,12 +22,12 @@
 								<div class="card-header">
 									<div class="card-header-side pull-left">
 										<div class="avatar">
-											<img alt="John Smith Avatar" src="./public/images/users/avatar.jpg">
+											<img alt="John Smith Avatar" src="/public/images/users/avatar.jpg">
 										</div>
 									</div>
 									<div class="card-inner">
 										<span class="card-heading">
-											<a href="?controller=index&action=detail&id=<?php echo $value['id']; ?>">
+											<a href="/index/detail/<?php echo $value['id']; ?>">
 												
 											</a>
 											<?php echo $value['titel']; ?> verfasst von <?php echo $value['user']; ?>
@@ -35,7 +35,7 @@
 									</div>
 								</div>
 								<div class="card-img" style="height: auto; max-height: 30vh">
-									<img alt="alt text" src="./public/images/summer.jpg" style="width: 100%;">
+									<img alt="alt text" src="/public/images/summer.jpg" style="width: 100%;">
 									<p class="card-img-heading"><?php echo  date("d.m.Y", strtotime($value['datum'])); ?></p>
 								</div>
 								<div class="card-inner">
@@ -44,11 +44,11 @@
 								<div class="card-action">
 									<div class="card-action-btn pull-left">
 										<?php if(@$_GET['action'] == 'detail') { ?>
-											<a class="btn btn-flat waves-attach waves-effect" href="?controller=index">
+											<a class="btn btn-flat waves-attach waves-effect" href="/index">
 												<span class="icon">check</span>&nbsp;Zurück
 											</a>
 										<?php } else { ?>
-											<a class="btn btn-flat waves-attach waves-effect" href="?controller=index&action=detail&id=<?php echo $value['id']; ?>">
+											<a class="btn btn-flat waves-attach waves-effect" href="/index/detail/<?php echo $value['id']; ?>">
 												<span class="icon">check</span>&nbsp;Weiterlesen
 											</a>
 										<?php } ?>
@@ -61,7 +61,7 @@
 											<ul class="dropdown-menu dropdown-menu-right">
 												<?php if(@$_SESSION['role'] == 2) { ?>
 												<li>
-													<a class="waves-attach waves-effect" href="?controller=index&action=delete&id=<?php echo $value['id']; ?>"><span class="icon margin-right-sm">filter_1</span>&nbsp;Beitrag löschen</a>
+													<a class="waves-attach waves-effect" data-toggle="modal" href="#delete_modal"><span class="icon margin-right-sm">filter_1</span>&nbsp;Beitrag löschen</a>
 												</li>
 												<?php } ?>
 												<li>

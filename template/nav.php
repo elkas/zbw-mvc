@@ -1,21 +1,21 @@
 	<nav aria-hidden="true" class="menu" id="ui_menu" tabindex="-1">
 		<div class="menu-scroll">
 			<div class="menu-content">
-				<a class="menu-logo" href="?controller=index">Startseite</a>
+				<a class="menu-logo" href="/index">Startseite</a>
 				<ul class="nav">
 					<li>
 						<a class="collaosed waves-attach" data-toggle="collapse" href="#ui_menu_components">Unterseiten</a>
 						<ul class="menu-collapse " id="ui_menu_components">
 							<?php if (@$_SESSION['role'] == 2) { ?>
-							<li><a class="waves-attach" href="?controller=admin">Administration</a></li>
+							<li><a class="waves-attach" href="/admin">Administration</a></li>
 							<?php } ?>
-							<li><a class="waves-attach" href="?controller=kontakt">Kontaktseite<small class="margin-left-xs">(Kontaktformular)</small></a></li>
+							<li><a class="waves-attach" href="/kontakt">Kontaktseite<small class="margin-left-xs">(Kontaktformular)</small></a></li>
 							<?php if (@$_SESSION['admin'] <> 0) { ?>
-							<li><a class="waves-attach" href="?controller=login&action=logout">Abmelden</a></li>
+							<li><a class="waves-attach" href="/user/logout">Abmelden</a></li>
 							<?php } else { ?>
-							<li><a class="waves-attach" href="?controller=login">Anmeldung</a></li>
+							<li><a class="waves-attach" href="/user">Anmeldung</a></li>
 							<?php } ?>
-							<li><a class="waves-attach" href="?controller=info">Informationen</a></li>
+							<li><a class="waves-attach" href="/info">Informationen</a></li>
 						</ul>
 					</li>
 

@@ -36,7 +36,7 @@
 												echo '<td style="vertical-align: middle !important;">' . $value['description'] . '</td>';
 												echo '<td style="vertical-align: middle !important;">' . $value['role'] . '</td>';
 												echo '<td style="vertical-align: middle !important;">' . $value['loginname'] . '</td>';
-												echo '<td class="text-right" style="vertical-align: middle !important;"><a id="btn-delete" class="btn btn-brand-accent waves-attach waves-light" title="Benutzer entfernen" onclick="deleteEntry(' . $value['usersid'] . ');">Löschen</a></td>';
+												echo '<td class="text-right" style="vertical-align: middle !important;"><a id="btn-delete" class="btn btn-brand-accent waves-attach waves-light" title="Benutzer entfernen" data-toggle="modal" href="#delete_modal" onclick="confirmDeleteEntry(' . $value['usersid'] . ');">Löschen</a></td>';
 												echo '</tr>';
 											}
 										?>

@@ -7,8 +7,8 @@
 	<title>MVC Login</title>
 
 	<!-- css -->
-	<link href="./public/css/base.min.css" rel="stylesheet">
-	<link href="./public/css/project.min.css" rel="stylesheet">
+	<link href="/public/css/base.min.css" rel="stylesheet">
+	<link href="/public/css/project.min.css" rel="stylesheet">
 	
 	<!-- favicon -->
 	<!-- ... -->

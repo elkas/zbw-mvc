@@ -17,8 +17,8 @@
 
 	<!-- js -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	<script src="./public/js/base.min.js"></script>
-	<script src="./public/js/project.min.js"></script>
-	<script src="./public/js/custom.js"></script>
+	<script src="/public/js/base.min.js"></script>
+	<script src="/public/js/project.min.js"></script>
+	<script src="/public/js/custom.js"></script>
 </body>
 </html>

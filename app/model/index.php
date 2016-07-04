@@ -59,7 +59,11 @@ class Model {
 				'role'=>$row->role
 			);
 		}
-		return $user;
+		if(@$user) {
+			return $user;
+		} else {
+			return false;
+		}
 	}
 
 	public function deleteData($id) {

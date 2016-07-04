@@ -7,8 +7,8 @@
 	<title>MVC mit Daemonite's Material UI</title>
 
 	<!-- css -->
-	<link href="./public/css/base.min.css" rel="stylesheet">
-	<link href="./public/css/project.min.css" rel="stylesheet">
+	<link href="/public/css/base.min.css" rel="stylesheet">
+	<link href="/public/css/project.min.css" rel="stylesheet">
 	
 	<!-- favicon -->
 	<!-- ... -->
@@ -22,7 +22,7 @@
 				</a>
 			</li>
 		</ul>
-		<a class="header-logo margin-left-no" href="?controller=index"></a>
+		<a class="header-logo margin-left-no" href="/ndex"></a>
 		
 		<?php if(@$_SESSION['usersid']) { ?>
 		
@@ -30,14 +30,14 @@
 			<li class="dropdown margin-right">
 				<a class="dropdown-toggle padding-left-no padding-right-no" data-toggle="dropdown">
 					<span class="access-hide"><?php echo $_SESSION['firstname'] .' ' . $_SESSION['lastname'] ?></span>
-					<span class="avatar avatar-sm"><img alt="Avatar" src="./public/images/users/avatar.jpg"></span>
+					<span class="avatar avatar-sm"><img alt="Avatar" src="/public/images/users/avatar.jpg"></span>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-right">
 					<li>
-						<a class="padding-right-lg waves-attach" href="?controller=login"><span class="icon icon-lg margin-right">account_box</span>Profileinstellungen</a>
+						<a class="padding-right-lg waves-attach" href="/user"><span class="icon icon-lg margin-right">account_box</span>Profileinstellungen</a>
 					</li>
 					<li>
-						<a class="padding-right-lg waves-attach" href="?controller=login&action=logout"><span class="icon icon-lg margin-right">exit_to_app</span>Abmelden</a>
+						<a class="padding-right-lg waves-attach" href="/user/logout"><span class="icon icon-lg margin-right">exit_to_app</span>Abmelden</a>
 					</li>
 				</ul>
 			</li>

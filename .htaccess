@@ -1,0 +1,38 @@
+<IfModule mod_rewrite.c>
+
+	# ---------------------------------------------------------------------------------#
+	# Apache Rewrite aktivieren
+	# vorher bitte in httpd.conf AllowOverride All einstellen (von None ändern zu All)
+	# ---------------------------------------------------------------------------------#
+
+	RewriteEngine On
+
+	# ---------------------------------------------------------------------------------#
+	# Existierenden Dateien und Verzeichnisse ausschliessen
+	# ---------------------------------------------------------------------------------#
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+
+	# ---------------------------------------------------------------------------------#
+	# URL Umschreibung:
+	# index.php?controller=index&action=detail&id=1 wird von Rewrite geändert zu
+	# /index/detail/1
+	# ---------------------------------------------------------------------------------#
+
+	RewriteRule ^([^/]*)/?([^/]*)/?(.*)$ index.php?controller=$1&action=$2&id=$3 [QSA,L]
+		
+	# ---------------------------------------------------------------------------------#
+	# Bedeutung der Zeichenketten
+	# 1. ^ eröffnet die Zeichenkette
+	# 2. ([^/]*) steht für Paramener 1 und wird mit $1 gelesen
+	# 3. ?([^/]*) steht für Paramener 2 und wird mit $2 gelesen (optional)
+	# 4. /?(.*) steht für Paramener 3 und wird mit $3 gelesen (optional)
+	# 5. $ beendet die Zeichenkette
+
+	# ---------------------------------------------------------------------------------#
+	# Das Verzeichnis /public/ ganz ausschliessen und nicht umschreiben
+	# ---------------------------------------------------------------------------------#
+	RewriteRule ^/public/(.*)$ /public/$1 [L]
+
+</IfModule>
