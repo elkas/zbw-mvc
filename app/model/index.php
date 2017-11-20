@@ -5,6 +5,7 @@ class Model {
 	private $db;
 	
 	public function __construct() {
+		$this->db = new myDB();
 	}
 
 	public function regUser() {
@@ -18,37 +19,47 @@ class Model {
 	}	
 
 	public function getData($id) {
-		if($id == '0') {
-			$sql = 'SELECT * FROM  data';
+		if($id == "0") {
+			$sql = "SELECT * FROM data LEFT JOIN users ON data.user = users.usersid";
 		} else {
-			$sql = 'SELECT * FROM data WHERE dataid = ' . $id;
+			$sql = "SELECT * FROM data LEFT JOIN users ON data.user = users.usersid WHERE dataid = $id";
 		}
 
-		$this->db = new myDB();
 		$this->db->sqlExec($sql);
 		$this->data = $this->db->_results;
 
-		while($row = mysqli_fetch_object($this->data)){
-			$user = $this->getUserData($row->user);
-			$name = $user[0]['firstname'] .' '. $user[0]['lastname'];
-			$resp[] = array(
-				'status'=>'true',
-				'id'=>$row->dataid,
-				'titel'=>$row->titel,
-				'inhalt'=>$row->inhalt,
-				'datum'=>$row->datum,
-				'user'=>$name
-			);
+		if($this->db) {
+			$this->data = $this->db->getResults();
+			//var_dump($this->data);
+			//while($row = mysqli_fetch_object($this->data)){
+			
+			//	foreach ($result as $key => $value) {
+				//$user = $this->getUserData($row->user);
+				//$data = array_shift($user);
+				//$name = $data['firstname'] .' '. $data['lastname'];
+				//$this->data = array(
+					//'status'=>'true',
+					//'id'=>$value["dataid"],
+					//'titel'=>$value["titel"],
+					//'inhalt'=>$value["inhalt"],
+					//'datum'=>$value["datum"],
+					//'user'=>'$name'
+				//);
+			//}
+		} else {
+			$this->data = array('status'=>'false','data'=>'nok');
 		}
-		$this->data = $resp;
+
 		$this->db = NULL;
+		//print_r($this->data);
 		return $this->data;
+
 	}
 
 	public function getUserData($id) {
 		$sql = 'SELECT * FROM users WHERE usersid = ' . $id;
 		$this->db->sqlExec($sql);
-		while($row = mysqli_fetch_object($this->db->_results)) {
+		/*while($row = mysqli_fetch_object($this->db->_results)) {
 			$user[] = array(
 				'status'=>'true',
 				'usersid'=>$row->usersid,
@@ -58,7 +69,7 @@ class Model {
 				'description'=>$row->description,
 				'role'=>$row->role
 			);
-		}
+		}*/
 		if(@$user) {
 			return $user;
 		} else {
@@ -68,10 +79,9 @@ class Model {
 
 	public function deleteData($id) {
 		$this->data = '';
-		$this->db = new myDB();
 		$this->db->sqlExec('DELETE FROM data WHERE dataid=' . $id);
-		$this->data = $this->db->_results;
-		return $this->data;
+		//$this->data = $this->db->_results;
+		//return $this->data;
 	}
 }
 ?>

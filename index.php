@@ -7,7 +7,7 @@
 	define('MYSQL_HOST', "localhost");
 	define('MYSQL_USER' ,"root");
 	define('MYSQL_PW' ,"");
-	define('MYSQL_DB', "m151");
+	define('MYSQL_DB', "m307_uekmvc");
 	
 	// Datenbank Verbindungsklasse einbinden
 	if(file_exists('./lib/mydb.php')) {
@@ -63,16 +63,18 @@
 			echo $controller->displayData($id);
 		} else if($action == 'delete') {
 			// z.B. ?controller=index&action=delete&id=1
-			echo $controller->deleteData($id);
+			$controller->deleteData($id);
 		} else if($action == 'insert') {
 			// z.B. ?controller=index&action=insert
-			echo $controller->insertData(); 
+			$controller->insertData(); 
 		} else if($action == 'load') {
 			// z.B. ?controller=index&action=load
 			echo $controller->loadData(); 
 		} else if($action == 'send') {
 			// z.B. ?controller=index&action=send
 			echo $controller->formValidation();
+		} else {
+			echo $controller->loadData(); 
 		}
 	} else {
 		//echo $controller->displayPublicData(); 

@@ -14,24 +14,27 @@ class Model {
 
 		$this->db = new myDB();
 		$this->db->sqlExec('SELECT * FROM users');
+		$this->data = $this->db->getResults();
 
-		while($row = mysqli_fetch_object($this->db->_results)){
-			if ($row->loginname == $_name && $row->loginpass == $_pass){
-				$this->check = $row->usersid;
-				$this->role = $row->role;
-				$this->data = array('status'=>'true','data'=>$row->loginname,'firstname'=>$row->firstname,'lastname'=>$row->lastname,'description'=>$row->description);
+		foreach ($this->data as $row) {
+			if ($row['loginname'] == $_name && $row['loginpass'] == $_pass){
+				$this->check = $row['usersid'];
+				$this->role = $row['role'];
+				$this->data = array('status'=>'true','data'=>$row['loginname'],'firstname'=>$row['firstname'],'lastname'=>$row['lastname'],'description'=>$row['description']);
 				
 				// Session Variable setzen
 				$_SESSION['admin'] = intval($this->check);
 				$_SESSION['usersid'] = intval($this->check);
 				$_SESSION['role'] = intval($this->role);
-				$_SESSION['username'] = $row->loginname;
-				$_SESSION['firstname'] = $row->firstname;
-				$_SESSION['lastname'] = $row->lastname;
+				$_SESSION['username'] = $row['loginname'];
+				$_SESSION['firstname'] = $row['firstname'];
+				$_SESSION['lastname'] = $row['lastname'];
 			}
 		}
 		$this->db = NULL;	
 		return $this->check;
+		
+		//var_dump($this->data);
 	}
 
 	public function showForm(){

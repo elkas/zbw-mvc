@@ -16,6 +16,7 @@
 			<div class="row">
 				<div class="col-lg-9 col-sm-10 col-sm-push-1">
 					<section class="content-inner margin-top-no">
+					
 						<?php foreach ($data as $key => $value) { ?>
 						<div class="card">
 							<div class="card-main">
@@ -26,12 +27,12 @@
 										</div>
 									</div>
 									<div class="card-inner">
-										<span class="card-heading">
+										<h3 class="card-heading">
 											<a href="/index/detail/<?php echo $value['id']; ?>">
 												
 											</a>
-											<?php echo $value['titel']; ?> verfasst von <?php echo $value['user']; ?>
-										</span>
+											<?php echo $value['titel']; ?> <span>von <?php echo $value['lastname'] . ' ' .$value['firstname']; ?></span>
+										</h3>
 									</div>
 								</div>
 								<div class="card-img" style="height: auto; max-height: 30vh">
@@ -48,7 +49,7 @@
 												<span class="icon">check</span>&nbsp;Zurück
 											</a>
 										<?php } else { ?>
-											<a class="btn btn-flat waves-attach waves-effect" href="/index/detail/<?php echo $value['id']; ?>">
+											<a class="btn btn-flat waves-attach waves-effect" href="/index/detail/<?=$value['dataid']; ?>">
 												<span class="icon">check</span>&nbsp;Weiterlesen
 											</a>
 										<?php } ?>

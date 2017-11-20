@@ -18,8 +18,10 @@ class Controller {
 	}
 
 	public function deleteData($id) {
-		$this->data = $this->model->deleteData($id);
-		return $this->data;
+		$this->model->deleteData($id);
+		//$this->model->loadData();
+		//$this->data = $this->model->getUserData();
+		//return json_encode($this->data);
 	}
 
 	public function loadData() {
