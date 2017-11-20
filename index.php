@@ -60,13 +60,14 @@
 			echo $controller->displayData($id);
 		} else if($action == 'detail') {
 			// z.B. ?controller=index&action=detail&id=1
-			echo $controller->displayData($id);
+			echo $controller->displayDetails($id);
 		} else if($action == 'delete') {
 			// z.B. ?controller=index&action=delete&id=1
 			$controller->deleteData($id);
+			echo $controller->displayData($id);
 		} else if($action == 'insert') {
 			// z.B. ?controller=index&action=insert
-			$controller->insertData(); 
+			$controller->insertData();
 		} else if($action == 'load') {
 			// z.B. ?controller=index&action=load
 			echo $controller->loadData(); 
@@ -80,4 +81,5 @@
 		//echo $controller->displayPublicData(); 
 		echo $controller->displayData($id);
 	}
+	//echo $controller->displayData($id);
 ?>

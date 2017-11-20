@@ -2,10 +2,10 @@
 class Model {
 	
 	public $data;
-	private $db;
+	public $db;
 	
 	public function __construct() {
-		$this->db = new myDB();
+		$this->db = new myDB;
 	}
 
 	public function regUser() {
@@ -18,63 +18,30 @@ class Model {
 		return $this->data;
 	}	
 
-	public function getData($id) {
-		if($id == "0") {
-			$sql = "SELECT * FROM data LEFT JOIN users ON data.user = users.usersid";
-		} else {
+
+	public function getDetails($id) {
+		if(!empty($id) && $id != 0) {
 			$sql = "SELECT * FROM data LEFT JOIN users ON data.user = users.usersid WHERE dataid = $id";
-		}
 
-		$this->db->sqlExec($sql);
-		$this->data = $this->db->_results;
-
-		if($this->db) {
+			$this->db->sqlExec($sql);
 			$this->data = $this->db->getResults();
-			//var_dump($this->data);
-			//while($row = mysqli_fetch_object($this->data)){
-			
-			//	foreach ($result as $key => $value) {
-				//$user = $this->getUserData($row->user);
-				//$data = array_shift($user);
-				//$name = $data['firstname'] .' '. $data['lastname'];
-				//$this->data = array(
-					//'status'=>'true',
-					//'id'=>$value["dataid"],
-					//'titel'=>$value["titel"],
-					//'inhalt'=>$value["inhalt"],
-					//'datum'=>$value["datum"],
-					//'user'=>'$name'
-				//);
-			//}
-		} else {
-			$this->data = array('status'=>'false','data'=>'nok');
 		}
-
-		$this->db = NULL;
-		//print_r($this->data);
 		return $this->data;
+	}
 
+	public function getData() {
+
+		$sql = "SELECT * FROM data LEFT JOIN users ON data.user = users.usersid";
+				$this->db->sqlExec($sql);
+		$this->data = $this->db->getResults();
+		return $this->data;
 	}
 
 	public function getUserData($id) {
 		$sql = 'SELECT * FROM users WHERE usersid = ' . $id;
 		$this->db->sqlExec($sql);
-		/*while($row = mysqli_fetch_object($this->db->_results)) {
-			$user[] = array(
-				'status'=>'true',
-				'usersid'=>$row->usersid,
-				'loginname'=>$row->loginname,
-				'firstname'=>$row->firstname,
-				'lastname'=>$row->lastname,
-				'description'=>$row->description,
-				'role'=>$row->role
-			);
-		}*/
-		if(@$user) {
-			return $user;
-		} else {
-			return false;
-		}
+		$this->data = $this->db->getResults();
+		return $this->data;
 	}
 
 	public function deleteData($id) {

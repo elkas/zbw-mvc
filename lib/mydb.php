@@ -5,39 +5,35 @@ class myDB {
 	public  $_data;
 
 	public function __construct(){
-		$this->dbConnect();
-	}
-
-	function __destruct(){
-		//$this->_con->close();
-	}
-
-	public function dbConnect(){
-		//@$this->_con = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PW, MYSQL_DB);
-		//if($this->_con->connect_errno){
-			//echo "Keine Datenbank vorhanden, wird erstellt.";
-    	//		$this->dbInstall();
-		//}
-
         try {
             //$this->dbconn = new PDO("mysql:host=$this->dbhost;dbname=$this->dbname", "$this->dbuser", "$this->dbpass");
             $this->_con = new PDO("mysql:host=".MYSQL_HOST, MYSQL_USER, MYSQL_PW);
 			$this->_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			//$this->dbInstall();
 			$this->sqlExec("USE ".MYSQL_DB);
-            //$this->useDatabase();
+			//$this->useDatabase();
+			return $this->_con;
         } catch (PDOException $e) {
             $msg = '<div class="alert alert-danger" role="alert"><h4>Keine Verbindung zur Datenbank möglich!</h4>' . $e->getMessage() . '</div>';
 			die($msg);
 			//$this->dbInstall();
-			//header('location: /');
-        }		
+		}
 	}
+
+	public function getPDO() {
+		return $this->_con;
+	}
+
+	public function __destruct(){
+		//$this->_con->close();
+	}
+
 	// Methode um Daten abzurufen model->sqlExec(SQL)
-	function sqlExec($sqlstr)	{
+	public function sqlExec($sqlstr)	{
 		//$this->_results = $this->_con->query($sqlstr);
 		$this->_results = $this->_con->prepare($sqlstr);
 		$this->_results->execute();
+		//var_dump($this->_results);
 		//$this->status = $this->result->execute();
 	}
 

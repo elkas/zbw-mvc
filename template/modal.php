@@ -1,5 +1,5 @@
 <div aria-hidden="true" class="modal fade" id="delete_modal" role="dialog" tabindex="-1">
-	<form action="/index/delete/<?php echo @$value['id']; ?>" id="delete-form">
+	<form action="/index/delete/<?php echo @$value['dataid']; ?>" id="delete-form">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-heading">

@@ -31,7 +31,7 @@
 											<a href="/index/detail/<?php echo $value['id']; ?>">
 												
 											</a>
-											<?php echo $value['titel']; ?> <span>von <?php echo $value['lastname'] . ' ' .$value['firstname']; ?></span>
+											<?php echo $value['titel']; ?> <span>von <?php echo $value['lastname'] . ' ' .$value['firstname']; ?> / <?=$value['dataid'];?></span>
 										</h3>
 									</div>
 								</div>
@@ -62,7 +62,7 @@
 											<ul class="dropdown-menu dropdown-menu-right">
 												<?php if(@$_SESSION['role'] == 2) { ?>
 												<li>
-													<a class="waves-attach waves-effect" data-toggle="modal" href="#delete_modal"><span class="icon margin-right-sm">filter_1</span>&nbsp;Beitrag löschen</a>
+													<a class="waves-attach waves-effect" href="/index/delete/<?php echo @$value['dataid']; ?>"><span class="icon margin-right-sm">filter_1</span>&nbsp;Beitrag löschen</a>
 												</li>
 												<?php } ?>
 												<li>

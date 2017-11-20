@@ -14,16 +14,16 @@ class Controller {
 	}
 
 	// z.B. $controller->displayData(1)
-	public function displayData($id){
-		// Daten via Model aufbereiten und lokal abspeichern
-		$this->data = $this->model->getData($id);
-
-		// View mit Daten versorgen, View anzeigen
+	public function displayData(){
+		$this->data = $this->model->getData();
 		return $this->view->showContent($this->data);
-
-		// Eine weitere Variante wäre der direkte Aufruf im "return" wie folgt
-		// return $this->view->showContent($this->model->getData($id));
 	}
+
+	public function displayDetails($id){
+		$this->data = $this->model->getDetails($id);
+		return $this->view->showContent($this->data);
+	}
+	
 
 	// z.B. $controller->displayPublicData()
 	public function displayPublicData(){
@@ -38,7 +38,7 @@ class Controller {
 	public function deleteData($id) {
 		// Daten via Model aufbereiten und lokal abspeichern
 		$this->model->deleteData($id);
-		$this->data = $this->model->getData('0');
+		$this->data = $this->model->getData();
 
 		// View mit Daten versorgen, View anzeigen
 		return $this->view->showContent($this->data);
